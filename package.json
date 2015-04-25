@@ -1,0 +1,24 @@
+{
+  "name": "tilelive-raster",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gdal": "git://github.com/mojodna/node-gdal#jpeg-compressed-tiff",
+    "handlebars": "^3.0.2",
+    "locking-cache": "^0.2.1",
+    "mapnik-omnivore": "git://github.com/mojodna/mapnik-omnivore#integration",
+    "request": "^2.55.0",
+    "retry": "^0.6.1",
+    "tmp": "0.0.25"
+  },
+  "peerDependencies": {
+    "mapnik": "*",
+    "tilelive-mapnik": "*"
+  }
+}
