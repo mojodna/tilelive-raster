@@ -7,7 +7,8 @@ var constants = require("constants"),
     url = require("url"),
     util = require("util");
 
-var handlebars = require("handlebars"),
+var clone = require("clone"),
+    handlebars = require("handlebars"),
     omnivore = require("mapnik-omnivore"),
     request = require("request"),
     retry = require("retry"),
@@ -160,6 +161,8 @@ module.exports = function(tilelive) {
   var RasterSource = function(uri, callback) {
     if (typeof(uri) === "string") {
       uri = url.parse(uri, true);
+    } else {
+      uri = clone(uri);
     }
 
     uri.protocol = uri.protocol.replace(PREFIX, "");

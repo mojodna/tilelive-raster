@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clone": "^1.0.2",
     "gdal": "git://github.com/mojodna/node-gdal#jpeg-compressed-tiff",
     "handlebars": "^3.0.2",
     "mapnik-omnivore": "git://github.com/mojodna/mapnik-omnivore#integration",
