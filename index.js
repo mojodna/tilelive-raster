@@ -178,12 +178,6 @@ module.exports = function(tilelive) {
       default:
         return callback(new Error("Unsupported raster transport: %s" + url.format(uri)));
     }
-
-    this.scale = uri.query.scale || 1;
-    this.tileSize = (uri.query.tileSize | 0) || 256;
-    this.format = uri.query.format || "png";
-
-    return callback(null, this);
   };
 
   RasterSource.registerProtocols = function(_tilelive) {
