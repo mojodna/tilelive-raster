@@ -1,12 +1,13 @@
 {
   "name": "tilelive-raster",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "A tilelive source for simple rasters, both local and remote.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Seth Fitzsimmons <seth@mojodna.net>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mojodna/tilelive-raster.git"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "clone": "^1.0.2",
