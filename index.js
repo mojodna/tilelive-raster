@@ -14,7 +14,9 @@ var clone = require("clone"),
     retry = require("retry"),
     tmp = require("tmp");
 
-var version = require("./package.json").version;
+var meta = require("./package.json"),
+    NAME = meta.name,
+    VERSION = meta.version;
 
 http.globalAgent.maxSockets = Infinity;
 tmp.setGracefulCleanup();
@@ -120,7 +122,7 @@ module.exports = function(tilelive) {
   // that it can be treated as a local source
   var loadRemote = function(uri, callback) {
     var headers = {
-      "User-Agent": "tilelive-raster/" + version
+      "User-Agent": [NAME, VERSION].join("/")
     };
 
     var sourceUrl = url.format(uri);
