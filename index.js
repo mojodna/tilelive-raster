@@ -178,7 +178,7 @@ module.exports = function(tilelive) {
         return loadLocal(uri, callback);
 
       default:
-        return callback(new Error("Unsupported raster transport: %s" + url.format(uri)));
+        return callback(new Error(util.format("Unsupported %s transport: %s", NAME, url.format(uri))));
     }
   };
 
