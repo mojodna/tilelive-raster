@@ -78,16 +78,6 @@ var fetch = function(uri, headers, callback) {
   });
 };
 
-// raster+file://./raster.tif?format=png
-// raster+http://dev.files.fieldpapers.org.s3.amazonaws.com/snapshots/16ctalcl/walking-paper-16ctalcl.tiff
-// raster+https://s3.amazonaws.com/dev.files.fieldpapers.org/snapshots/16ctalcl/walking-paper-16ctalcl.tiff
-//
-// 1) download (if http(s)) to a temporary path (then this becomes a recursive
-//    load using raster+file:, so this needs to be done in the constructor)
-// 2) use mapnik-omnivore to determine extent, bounds, center
-// 3) load tilelive-mapnik w/ a stylesheet filled in with correct values
-//    (propagate uri.query)
-
 module.exports = function(tilelive) {
   var loadLocal = function(uri, callback) {
     var filename = path.resolve(path.join(uri.host, uri.pathname));
