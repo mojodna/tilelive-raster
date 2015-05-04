@@ -129,7 +129,7 @@ module.exports = function(tilelive) {
 
       return tmp.file({
         postfix: path.extname(uri.pathname)
-      }, function(err, filename, fd) {
+      }, function(err, filename, fd, cleanup) {
         if (err) {
           return callback(err);
         }
@@ -145,7 +145,24 @@ module.exports = function(tilelive) {
             host: "",
             pathname: filename,
             query: uri.query
-          }, callback);
+          }, function(err, source) {
+            if (err) {
+              return callback(err);
+            }
+
+            var _close = source.close || function(cb) {
+              return setImmediate(cb);
+            };
+
+            source.close = function() {
+              // cleanup temporary files
+              cleanup();
+
+              return _close.apply(source, arguments);
+            };
+
+            return callback(null, source);
+          });
         });
       });
     });
