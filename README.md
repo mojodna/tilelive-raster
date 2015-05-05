@@ -18,16 +18,3 @@ tilelive.load("raster+http://example.com/whatever.tif", ...);
 // generate tiles from a local raster
 tilelive.load("raster+file://./whatever.tif", ...);
 ```
-
-## Caveats
-
-If you need support for JPEG-compressed GeoTIFFs (until
-[naturalatlas/node-gdal#101](https://github.com/naturalatlas/node-gdal/issues/101)
-is fixed), use the following for a source build of node-gdal:
-
-```bash
-npm install --build-from-source=gdal
-```
-
-This can be used when installing `tilelive-raster` or when installing dependent
-modules for an app or library that requires `tilelive-raster`.
