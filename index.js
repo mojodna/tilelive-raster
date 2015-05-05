@@ -169,7 +169,7 @@ module.exports = function(tilelive) {
   };
 
   var RasterSource = function(uri, callback) {
-    if (typeof(uri) === "string") {
+    if (typeof uri === "string") {
       uri = url.parse(uri, true);
     } else {
       uri = clone(uri);
