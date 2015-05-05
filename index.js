@@ -12,6 +12,7 @@ var clone = require("clone"),
     omnivore = require("mapnik-omnivore"),
     request = require("request"),
     retry = require("retry"),
+    TileliveError = require("tilelive-error"),
     tmp = require("tmp");
 
 var meta = require("./package.json"),
@@ -85,7 +86,7 @@ module.exports = function(tilelive) {
     // determine metadata
     return omnivore.digest(filename, function(err, metadata) {
       if (err) {
-        return callback(err);
+        return new TileliveError(err, callback);
       }
 
       var xml = STYLESHEET({
@@ -105,7 +106,13 @@ module.exports = function(tilelive) {
         pathname: filename,
         query: uri.query,
         xml: xml
-      }, callback);
+      }, function(err, source) {
+        if (err) {
+          return new TileliveError(err, callback);
+        }
+
+        return callback(null, source);
+      });
     });
   };
 

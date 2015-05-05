@@ -1,8 +1,9 @@
 # Changes
 
-## vNext
+## v0.2.0 - 5/5/15
 
 * Update to `node-gdal@0.4.4` w/ JPEG and DEFLATE support
+* Use `tilelive-error` to prevent repeated attempts to load unsuitable rasters
 
 ## v0.1.2 - 5/4/15
 
