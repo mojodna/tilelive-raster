@@ -1,5 +1,9 @@
 # Changes
 
+## vNext
+
+* Update to `node-gdal@0.4.4` w/ JPEG and DEFLATE support
+
 ## v0.1.2 - 5/4/15
 
 * Attach a `close()` handler to clean up tmp files
