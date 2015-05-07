@@ -11,9 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "clone": "^1.0.2",
-    "gdal": "^0.4.4",
     "handlebars": "^3.0.2",
-    "mapnik-omnivore": "git://github.com/mojodna/mapnik-omnivore#integration",
+    "mapnik-omnivore": "^6.0.0",
     "request": "^2.55.0",
     "retry": "^0.6.1",
     "tilelive-error": "^1.0.0",

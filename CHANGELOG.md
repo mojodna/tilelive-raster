@@ -1,5 +1,10 @@
 # Changes
 
+## v0.2.1 - 5/6/15
+
+* Update to `mapnik-omnivore@6.0.0` (w/ `gdal@0.4.4`) and remove `gdal`
+  dependency
+
 ## v0.2.0 - 5/5/15
 
 * Update to `node-gdal@0.4.4` w/ JPEG and DEFLATE support
