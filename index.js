@@ -8,16 +8,21 @@ var constants = require("constants"),
     util = require("util");
 
 var clone = require("clone"),
+    debug = require("debug"),
     handlebars = require("handlebars"),
+    holdtime = require("holdtime"),
     omnivore = require("mapnik-omnivore"),
     request = require("request"),
     retry = require("retry"),
     TileliveError = require("tilelive-error"),
     tmp = require("tmp");
 
-var meta = require("./package.json"),
-    NAME = meta.name,
+var meta = require("./package.json");
+
+var NAME = meta.name,
     VERSION = meta.version;
+
+debug = debug(NAME);
 
 http.globalAgent.maxSockets = Infinity;
 tmp.setGracefulCleanup();
@@ -43,18 +48,24 @@ var fetch = function(uri, headers, callback) {
     factor: 1
   });
 
-  return operation.attempt(function() {
+  debug("Fetching %s", uri);
+
+  return operation.attempt(function(currentAttempt) {
     return request.get({
       uri: uri,
       encoding: null,
       headers: headers,
       timeout: 30e3
-    }, function(err, rsp, body) {
+    }, holdtime(function(err, rsp, body, elapsedMS) {
+      debug("%s took %dms", uri, elapsedMS);
+
       if (operation.retry(err)) {
+        debug("Retrying %s after %d attempt(s)", uri, currentAttempt);
         return null;
       }
 
       if (err) {
+        debug("Failed %s after %d attempt(s)", uri, currentAttempt);
         return callback(operation.mainError());
       }
 
@@ -66,6 +77,7 @@ var fetch = function(uri, headers, callback) {
 
       default:
         err = new Error("Upstream error:" + rsp.statusCode);
+        debug(err);
 
         if (rsp.statusCode.toString().slice(0, 1) !== "5") {
           return callback(err);
@@ -75,7 +87,7 @@ var fetch = function(uri, headers, callback) {
           return callback(operation.mainError(), rsp, body);
         }
       }
-    });
+    }));
   });
 };
 
@@ -83,11 +95,16 @@ module.exports = function(tilelive) {
   var loadLocal = function(uri, callback) {
     var filename = path.resolve(path.join(uri.host, uri.pathname));
 
+    debug("Pre-processing %s", filename);
+
     // determine metadata
-    return omnivore.digest(filename, function(err, metadata) {
+    return omnivore.digest(filename, holdtime(function(err, metadata, elapsedMS) {
       if (err) {
+        debug(err);
         return new TileliveError(err, callback);
       }
+
+      debug("Digested %s after %dms", filename, elapsedMS);
 
       var xml = STYLESHEET({
         extent: metadata.extent.join(", "),
@@ -106,14 +123,17 @@ module.exports = function(tilelive) {
         pathname: filename,
         query: uri.query,
         xml: xml
-      }, function(err, source) {
+      }, holdtime(function(err, source, elapsedMS) {
         if (err) {
+          debug(err);
           return new TileliveError(err, callback);
         }
 
+        debug("Loaded mapnik source after %dms", elapsedMS);
+
         return callback(null, source);
-      });
-    });
+      }));
+    }));
   };
 
   // fetch a remotely hosted raster file and save it to a temporary file so
@@ -183,6 +203,8 @@ module.exports = function(tilelive) {
     }
 
     uri.protocol = uri.protocol.replace(PREFIX, "");
+
+    debug("Creating new RasterSource for", url.format(uri));
 
     switch (uri.protocol) {
       case "http:":

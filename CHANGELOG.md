@@ -1,5 +1,10 @@
 # Changes
 
+## vNext
+
+* Improve debugging capabilities using `debug`. To enable, set
+  `DEBUG=tilelive-raster`
+
 ## v0.2.1 - 5/6/15
 
 * Update to `mapnik-omnivore@6.0.0` (w/ `gdal@0.4.4`) and remove `gdal`
