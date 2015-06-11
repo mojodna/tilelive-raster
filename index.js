@@ -14,7 +14,7 @@ var clone = require("clone"),
     omnivore = require("mapnik-omnivore"),
     request = require("request"),
     retry = require("retry"),
-    TileliveError = require("tilelive-error"),
+    TileliveError = require("tilelive-error")(),
     tmp = require("tmp");
 
 var meta = require("./package.json");

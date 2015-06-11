@@ -4,6 +4,7 @@
 
 * Improve debugging capabilities using `debug`. To enable, set
   `DEBUG=tilelive-raster`
+* Require `tilelive-error` correctly
 
 ## v0.2.1 - 5/6/15
 
