@@ -100,6 +100,7 @@ module.exports = function(tilelive) {
     // determine metadata
     return omnivore.digest(filename, holdtime(function(err, metadata, elapsedMS) {
       if (err) {
+        err.message += util.format(" (%s)", filename);
         debug(err);
         return new TileliveError(err, callback);
       }
