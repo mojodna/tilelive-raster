@@ -14,7 +14,7 @@
     "debug": "^2.2.0",
     "handlebars": "^3.0.2",
     "holdtime": "^0.1.1",
-    "mapnik-omnivore": "^6.0.0",
+    "mapnik-omnivore": "^7.1.0",
     "request": "^2.55.0",
     "retry": "^0.6.1",
     "tilelive-error": "^1.0.0",
