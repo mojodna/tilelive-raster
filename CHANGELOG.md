@@ -1,6 +1,10 @@
 # Changes
 
-## vNext
+## v0.3.0 - 1/22/16
+
+* Upgrade to `mapnik-omnivore@^7.1.0` (w/ `gdal@0.8.0` + binaries for node-5.x)
+
+## v0.2.2 - 6/11/15
 
 * Improve debugging capabilities using `debug`. To enable, set
   `DEBUG=tilelive-raster`
