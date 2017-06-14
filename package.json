@@ -10,15 +10,15 @@
   },
   "license": "ISC",
   "dependencies": {
-    "clone": "^1.0.2",
+    "clone": "^2.1.1",
     "debug": "^2.2.0",
-    "handlebars": "^3.0.2",
+    "handlebars": "^4.0.10",
     "holdtime": "^0.1.1",
-    "mapnik-omnivore": "^7.1.0",
+    "@mapbox/mapnik-omnivore": "^8.4.1",
     "request": "^2.55.0",
-    "retry": "^0.6.1",
+    "retry": "^0.10.1",
     "tilelive-error": "^1.0.0",
-    "tmp": "0.0.25"
+    "tmp": "0.0.31"
   },
   "peerDependencies": {
     "tilelive-mapnik": "*"

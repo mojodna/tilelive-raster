@@ -1,5 +1,9 @@
 # Changes
 
+## v0.4.0 - 6/13/17
+
+* Upgrade dependencies for compatibility with node-6.x+
+
 ## v0.3.0 - 1/22/16
 
 * Upgrade to `mapnik-omnivore@^7.1.0` (w/ `gdal@0.8.0` + binaries for node-5.x)
