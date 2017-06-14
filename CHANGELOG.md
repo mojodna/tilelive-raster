@@ -1,5 +1,9 @@
 # Changes
 
+## v0.4.2 - 6/14/17
+
+* Fix dependency `require`s
+
 ## v0.4.1 - 6/13/17
 
 * Request `@mapbox/tilelive-mapnik` as a peer dependency
