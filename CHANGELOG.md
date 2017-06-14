@@ -1,5 +1,9 @@
 # Changes
 
+## v0.4.1 - 6/13/17
+
+* Request `@mapbox/tilelive-mapnik` as a peer dependency
+
 ## v0.4.0 - 6/13/17
 
 * Upgrade dependencies for compatibility with node-6.x+

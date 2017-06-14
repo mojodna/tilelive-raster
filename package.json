@@ -21,6 +21,6 @@
     "tmp": "0.0.31"
   },
   "peerDependencies": {
-    "tilelive-mapnik": "*"
+    "@mapbox/tilelive-mapnik": "*"
   }
 }
