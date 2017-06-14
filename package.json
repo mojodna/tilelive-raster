@@ -1,6 +1,6 @@
 {
   "name": "tilelive-raster",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A tilelive source for simple rasters, both local and remote.",
   "main": "index.js",
   "author": "Seth Fitzsimmons <seth@mojodna.net>",
