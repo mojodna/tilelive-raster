@@ -1,5 +1,10 @@
 # Changes
 
+## v0.5.0 - 4/30/18
+
+* Upgrade `@mapbox/mapnik-omnivore` to prevent duplicate Mapnik versions when
+  installed with other, newer libs.
+
 ## v0.4.2 - 6/14/17
 
 * Fix dependency `require`s
