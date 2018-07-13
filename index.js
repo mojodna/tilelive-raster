@@ -110,7 +110,7 @@ module.exports = function(tilelive) {
       var xml = STYLESHEET({
         extent: metadata.extent.join(", "),
         center: metadata.center.join(", "),
-        zoom: Math.min(metadata.minzoom + 3, metadata.maxzoom),
+        zoom: metadata.maxzoom - 3,
         minzoom: metadata.minzoom,
         maxzoom: metadata.maxzoom,
         projection: metadata.projection,

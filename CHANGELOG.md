@@ -1,5 +1,9 @@
 # Changes
 
+## v0.5.1 - 7/13/18
+
+* Calculate target zoom based on `maxzoom` from `@mapbox/mapnik-omnivore`
+
 ## v0.5.0 - 4/30/18
 
 * Upgrade `@mapbox/mapnik-omnivore` to prevent duplicate Mapnik versions when
